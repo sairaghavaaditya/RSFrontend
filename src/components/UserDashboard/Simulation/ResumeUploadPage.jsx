@@ -38,7 +38,7 @@ const ResumeUploadPage = () => {
                 // Set resume data and interview questions
                 setResumeData(response.data.resume_data);
                 setInterviewQuestions(response.data.interview_questions);
-                navigate(`/InterviewPage/${command_id}`);
+                navigate(`/CompatibilityTest/${command_id}`);
             } else {
                 setUploadMessage("Failed to upload resume.");
                 console.error("Error response:", response.data);

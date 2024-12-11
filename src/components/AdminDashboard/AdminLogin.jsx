@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Styles/AdminLogin.css";
+import styles from "./AdminLogin.module.css"; // Import CSS module
 
 const AdminLogin = () => {
     const [formData, setFormData] = useState({
@@ -23,7 +23,6 @@ const AdminLogin = () => {
         try {
             const response = await axios.post("http://localhost:8000/admin-dashboard/admin/login/", formData);
             if (response.status === 200) {
-                // Redirect to admin dashboard on success
                 navigate("/admin-dashboard");
             }
         } catch (err) {
@@ -32,28 +31,47 @@ const AdminLogin = () => {
     };
 
     return (
-        <div className="admin-login-container">
-            <h2>Admin Login</h2>
-            {error && <p className="error-message">{error}</p>}
-            <form onSubmit={handleSubmit} className="admin-login-form">
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                />
-                <button type="submit">Login</button>
-            </form>
+        <div className={styles.page}>
+            {/* Right Container */}
+            <div className={styles.rightContainer}>
+                <h2>Welcome to <br /> Recruitsmart!</h2>
+                <p>"Elevate Your Expertise,<br /> Enhance Your Career"</p>
+            </div>
+
+            {/* Left Container */}
+            <div className={styles.leftContainer}>
+                <div className={styles.child}>
+                    <h3>Admin Login</h3>
+                    {error && <p className={styles.errorMessage}>{error}</p>}
+                    <form onSubmit={handleSubmit} className={styles.form}>
+                        <div className={styles.inputContainer}>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                                className={styles.input}
+                            />
+                        </div>
+                        <div className={styles.inputContainer}>
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                                className={styles.input}
+                            />
+                        </div>
+                        <button type="submit" className={styles.button}>
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 };

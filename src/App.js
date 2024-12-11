@@ -11,6 +11,7 @@ import Home from './components/Home/Homepage.jsx'
 import ResumeUploadPage from "./components/UserDashboard/Simulation/ResumeUploadPage.jsx";
 import FeedbackPage from './components/FeedbackPage/FeedbackPage'; 
 import RequireRedirect from './components/RequireRedirect';
+import CompatibilityTest from './components/UserDashboard/Compatibility/CompatibilityTest.jsx';
 import { NavigationProvider } from "./components/NavigationContext.jsx";
 
 
@@ -26,8 +27,9 @@ function App(){
         <Route path="/userlogin" element={<UserLogin />} />
         <Route path="/adminlogin" element={<AdminLogin />} />
         <Route path="/UserDashboard" element={<UserDashboard />} />
-        <Route path="/upload-resume" element={<ResumeUploadPage />} />
+        {/* <Route path="/upload-resume" element={<ResumeUploadPage />} /> */}
         <Route path="/upload-resume/:command_id" element={<ResumeUploadPage />} />
+        <Route path="/CompatibilityTest/:command_id" element={<CompatibilityTest />} />
         <Route path="/feedback" element={<FeedbackPage  />} /> {/* Add the feedback route */}
 
                 <Route
